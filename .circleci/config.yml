@@ -20,7 +20,9 @@ jobs:
           command: wget https://s3.amazonaws.com/dropbox.s3.ncode.ca/FermeCC/all_mods_download.zip
       - run:
           name: Extracting master archive
-          command: unzip all_mods_download.zip
+          command: |
+            mkdir -p mods
+            unzip all_mods_download.zip -d mods
       - run:
           name: Debug information
           command: find .
