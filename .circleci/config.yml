@@ -16,13 +16,21 @@ jobs:
             apt-get update
             apt-get install -y nsis
       - run:
-          name: Retrieving master archive
-          command: wget https://s3.amazonaws.com/dropbox.s3.ncode.ca/FermeCC/all_mods_download.zip
-      - run:
-          name: Extracting master archive
+          name: Retrieve and extractmaster archive
           command: |
+            wget https://s3.amazonaws.com/dropbox.s3.ncode.ca/FermeCC/all_mods_download.zip
             mkdir -p mods
             unzip all_mods_download.zip -d mods
+      - run:
+          name: Compile installer
+          command: |
+            makensis installer.nsi
+      - run:
+          name: AV scan
+          command: |
+            apt-get update
+            apt-get install -y clamav
+            clamscan
       - run:
           name: Debug information
           command: find .
