@@ -30,6 +30,7 @@ Section Mods
 SectionEnd
 
 Function .onInit
+  StrCpy $Language ${LANG_FRENCH}
   !insertmacro MUI_LANGDLL_DISPLAY
 FunctionEnd
 
