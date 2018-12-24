@@ -11,7 +11,7 @@ This project essentially produces two artifacts:
 - A self extracting installer named FermeCC_ModPack.exe
 - A zip archive named all_mods_download.zip
 
-The executable takes care of installing the mods at the right location on your system ($DOCUMENTS\My Games\FarmingSimulator2019\Mods), something that you need to do manually if you use the zip approach. Also note that the executable is ran through a ClamAV scan before each release to github.
+The executable takes care of installing the mods at the right location on your system (`$DOCUMENTS\My Games\FarmingSimulator2019\Mods`), something that you need to do manually if you use the zip approach. Also note that the executable is ran through a ClamAV scan before each release to github.
 
 Head on now to the [latest release](https://github.com/FermeCC/ModPackBuilder/releases/latest) to get started!
 
