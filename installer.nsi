@@ -25,6 +25,9 @@ InstallDir "$DOCUMENTS\My Games\FarmingSimulator2019\Mods"
 LicenseLangString MUILicense ${LANG_ENGLISH} "lic-en.txt"
 LicenseLangString MUILicense ${LANG_FRENCH} "lic-fr.txt"
 
+!define MUI_FINISHPAGE_LINK "Discord"
+!define MUI_FINISHPAGE_LINK_LOCATION "https://discord.gg/fwMp7sR"
+
 Section Mods
   SectionIn 1 RO
 
