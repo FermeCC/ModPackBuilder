@@ -1,5 +1,9 @@
 # ModPackBuilder
 
+[![GitHub release](http://img.shields.io/github/release/FermeCC/ModPackBuilder.svg?style=flat-square)](https://github.com/FermeCC/ModPackBuilder/releases/latest)
+[![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
+[![CircleCI](https://circleci.com/gh/FermeCC/ModPackBuilder.svg?style=svg)](https://circleci.com/gh/FermeCC/ModPackBuilder)
+
 A modpack build utility for the FermeCC Farming Simulator 2019 community server.
 
 This project essentially produces two artifacts:
@@ -10,8 +14,6 @@ This project essentially produces two artifacts:
 The executable takes care of installing the mods at the right location on your system ($DOCUMENTS\My Games\FarmingSimulator2019\Mods), something that you need to do manually if you use the zip approach. Also note that the executable is ran through a ClamAV scan before each release to github.
 
 Head on now to the [latest release](https://github.com/FermeCC/ModPackBuilder/releases/latest) to get started!
-
-[![CircleCI](https://circleci.com/gh/FermeCC/ModPackBuilder.svg?style=svg)](https://circleci.com/gh/FermeCC/ModPackBuilder) [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
 
 ## Social
 
