@@ -16,11 +16,15 @@ jobs:
             apt-get update
             apt-get install -y nsis
       - run:
+          name: Prepare folders
+          command: |
+            mkdir -p build
+            mkdir -p mods
+      - run:
           name: Retrieve and extractmaster archive
           command: |
-            wget https://s3.amazonaws.com/dropbox.s3.ncode.ca/FermeCC/all_mods_download.zip
-            mkdir -p mods
-            unzip all_mods_download.zip -d mods
+            wget https://s3.amazonaws.com/dropbox.s3.ncode.ca/FermeCC/all_mods_download.zip -P build/
+            unzip build/all_mods_download.zip -d mods
       - run:
           name: Compile installer
           command: |
@@ -33,6 +37,14 @@ jobs:
             freshclam
             clamscan -r *.exe
       - run:
-          name: Debug information
-          command: find .
+          name: Package and Release to Github
+          command: |
+            MODPACK_VERSION=$()
+            FILENAME=FermeCC_ModPack.exe
+
+            cp $FILENAME build/
+
+            wget https://github.com/tcnksm/ghr/releases/download/v0.12.0/ghr_v0.12.0_linux_amd64.tar.gz
+            tar -zxvf ghr_v0.12.0_linux_amd64.tar.gz
+            ghr_v0.12.0_linux_amd64/ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${MODPACK_VERSION} build/
 
