@@ -29,7 +29,7 @@ Section Mods
   File /r mods\*.zip
 SectionEnd
 
-;Function .onInit
-;  !insertmacro MUI_LANGDLL_DISPLAY
-;FunctionEnd
+Function .onInit
+  !insertmacro MUI_LANGDLL_DISPLAY
+FunctionEnd
 
