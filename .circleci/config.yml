@@ -8,13 +8,13 @@ jobs:
       - run:
           name: Installing QOL utils
           command: |
-            apt-get update
-            apt-get install -y wget unzip
+            apt-get -qq update
+            apt-get -qq install -y wget unzip
       - run:
           name: Installing nsis
           command: |
-            apt-get update
-            apt-get install -y nsis
+            apt-get -qq update
+            apt-get -qq install -y nsis
       - run:
           name: Prepare folders
           command: |
@@ -32,8 +32,8 @@ jobs:
       - run:
           name: AV scan
           command: |
-            apt-get update
-            apt-get install -y clamav
+            apt-get -qq update
+            apt-get -qq install -y clamav
             freshclam --quiet
             clamscan -r *.exe
       - run:
