@@ -12,7 +12,7 @@ InstType "Installation complète"
 
 !include MUI.nsh
 !insertmacro MUI_PAGE_WELCOME
-!insertmacro MUI_PAGE_LICENSE "license.rtf"
+;!insertmacro MUI_PAGE_LICENSE "license.rtf"
 !insertmacro MUI_PAGE_DIRECTORY
 !insertmacro MUI_PAGE_COMPONENTS
 !insertmacro MUI_PAGE_INSTFILES
