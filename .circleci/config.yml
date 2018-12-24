@@ -35,7 +35,7 @@ jobs:
             apt-get -qq update
             apt-get -qq install -y clamav
             freshclam --quiet
-            clamscan -r *.exe
+            clamscan -r *.exe mods/*
       - run:
           name: Package and Release to Github
           command: |
