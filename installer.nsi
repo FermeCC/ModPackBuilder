@@ -5,21 +5,24 @@ ShowInstDetails show
 
 InstallDir "$DOCUMENTS\My Games\FarmingSimulator2019\Mods"
 
-DirText "Test d'un message dirtext"
-ComponentText "Test d'un message componenttext"
+DirText "Veuillez choisir un dossier d'installation"
+ComponentText "Veuillez choisir un type d'installation"
 
-InstType "Full"
-InstType "Custom"
+InstType "Installation complète"
 
-Section Full
+!include MUI.nsh
+!insertmacro MUI_PAGE_WELCOME
+!insertmacro MUI_PAGE_LICENSE "license.rtf"
+!insertmacro MUI_PAGE_DIRECTORY
+!insertmacro MUI_PAGE_COMPONENTS
+!insertmacro MUI_PAGE_INSTFILES
+!insertmacro MUI_PAGE_FINISH
+!insertmacro MUI_LANGUAGE "English"
+!insertmacro MUI_LANGUAGE "German"
+!insertmacro MUI_LANGUAGE "French"
+
+Section Mods
   SectionIn 1 RO
-
-  SetOutPath $INSTDIR
-  File /r mods\*.zip
-SectionEnd
-
-Section Custom
-  SectionIn 2
 
   SetOutPath $INSTDIR
   File /r mods\*.zip
