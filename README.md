@@ -33,5 +33,5 @@ This project is licensed under the GPL License - see the [LICENSE.md](LICENSE.md
 
 ## Acknowledgments
 
-* We are not taking credit for any of the mods packaged through this application.
+* We are not taking credit for any of the mods packaged through this application, all mods are properties of their respective creators.
 * Hat tip to anyone who's code was used.
