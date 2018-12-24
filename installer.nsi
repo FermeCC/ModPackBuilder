@@ -10,7 +10,7 @@ InstallDir "$DOCUMENTS\My Games\FarmingSimulator2019\Mods"
 
 ;InstType "Installation complète"
 
-!include MUI2.nsh
+!include MUI.nsh
 
 !insertmacro MUI_LANGUAGE "French"
 !insertmacro MUI_LANGUAGE "English"
