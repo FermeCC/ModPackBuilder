@@ -39,7 +39,7 @@ jobs:
       - run:
           name: Package and Release to Github
           command: |
-            MODPACK_VERSION=$()
+            MODPACK_VERSION=$(date +%F_%T)
             FILENAME=FermeCC_ModPack.exe
 
             cp $FILENAME build/
