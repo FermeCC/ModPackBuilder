@@ -1,3 +1,5 @@
+Unicode true
+
 Name "FermeCC ModPack"
 OutFile "FermeCC_ModPack.exe"
 
@@ -17,8 +19,8 @@ InstType "Installation complète"
 !insertmacro MUI_PAGE_COMPONENTS
 !insertmacro MUI_PAGE_INSTFILES
 !insertmacro MUI_PAGE_FINISH
-!insertmacro MUI_LANGUAGE "English"
 !insertmacro MUI_LANGUAGE "French"
+!insertmacro MUI_LANGUAGE "English"
 
 Section Mods
   SectionIn 1 RO
@@ -26,4 +28,8 @@ Section Mods
   SetOutPath $INSTDIR
   File /r mods\*.zip
 SectionEnd
+
+Function .onInit
+  !insertmacro MUI_LANGDLL_DISPLAY
+FunctionEnd
 
