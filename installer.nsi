@@ -1,3 +1,5 @@
+Unicode true
+
 Name "FermeCC ModPack"
 OutFile "FermeCC_ModPack.exe"
 
