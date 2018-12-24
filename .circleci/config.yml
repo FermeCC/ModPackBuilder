@@ -30,7 +30,8 @@ jobs:
           command: |
             apt-get update
             apt-get install -y clamav
-            clamscan
+            freshclam
+            clamscan -r *.exe
       - run:
           name: Debug information
           command: find .
