@@ -12,13 +12,12 @@ InstType "Installation complète"
 
 !include MUI.nsh
 !insertmacro MUI_PAGE_WELCOME
-;!insertmacro MUI_PAGE_LICENSE "license.rtf"
+!insertmacro MUI_PAGE_LICENSE "lic.txt"
 !insertmacro MUI_PAGE_DIRECTORY
 !insertmacro MUI_PAGE_COMPONENTS
 !insertmacro MUI_PAGE_INSTFILES
 !insertmacro MUI_PAGE_FINISH
 !insertmacro MUI_LANGUAGE "English"
-!insertmacro MUI_LANGUAGE "German"
 !insertmacro MUI_LANGUAGE "French"
 
 Section Mods
