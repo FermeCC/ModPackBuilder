@@ -9,7 +9,7 @@ jobs:
           name: Installing QOL utils
           command: |
             apt-get -qq update
-            apt-get -qq install -y wget unzip
+            apt-get -qq install -y wget unzip xmlstarlet
       - run:
           name: Installing nsis
           command: |
@@ -37,6 +37,9 @@ jobs:
             freshclam --quiet
             clamscan -r *.exe mods/*
       - run:
+          name: Build Release Notes
+          command: ./build_release_notes.sh release_sub.txt
+      - run:
           name: Package and Release to Github
           command: |
             MODPACK_VERSION=$(date +%F_%H%M%S)
@@ -46,5 +49,5 @@ jobs:
 
             wget https://github.com/tcnksm/ghr/releases/download/v0.12.0/ghr_v0.12.0_linux_amd64.tar.gz
             tar -zxvf ghr_v0.12.0_linux_amd64.tar.gz
-            ghr_v0.12.0_linux_amd64/ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -delete ${MODPACK_VERSION} build/
+            ghr_v0.12.0_linux_amd64/ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -b "$(< release_sub.txt)" -delete ${MODPACK_VERSION} build/
 
