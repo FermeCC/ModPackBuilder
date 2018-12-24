@@ -13,7 +13,7 @@ InstallDir "$DOCUMENTS\My Games\FarmingSimulator2019\Mods"
 !include MUI.nsh
 
 !insertmacro MUI_PAGE_WELCOME
-!insertmacro MUI_PAGE_LICENSE "lic-en.txt"
+!insertmacro MUI_PAGE_LICENSE "$(MUILicense)"
 !insertmacro MUI_PAGE_COMPONENTS
 !insertmacro MUI_PAGE_DIRECTORY
 !insertmacro MUI_PAGE_INSTFILES
