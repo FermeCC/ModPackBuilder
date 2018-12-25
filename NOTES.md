@@ -11,6 +11,13 @@ Manually added `<multiplayer supported="true" />` in `modDesc.xml` using the sta
 
 Manually added `<multiplayer supported="true" />` in `modDesc.xml` using the standard procedure.
 
+## FS17_MeasureHelp.zip
+
+Usage:
+
+- Left ALT key + right click of the mouse to start/stop measuring
+- Middle mouse button switch units (meters / foots)
+
 
 ## Standard procedure to add the multiplayer tag to a mod
 
