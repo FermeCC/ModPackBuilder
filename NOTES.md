@@ -3,10 +3,6 @@
 Information pertaining to changes that were applied manually to mods, mainly to make them work in a multiplayer setting and possibly minor bugfixes.
 
 
-## SM19_Large_Multi_Silo.zip
-
-Manually added `<multiplayer supported="true" />` in `modDesc.xml` using the standard procedure.
-
 ## FS19_Large_Grain_Silo.zip
 
 Manually added `<multiplayer supported="true" />` in `modDesc.xml` using the standard procedure.
