@@ -14,6 +14,9 @@ Usage:
 - Left ALT key + right click of the mouse to start/stop measuring
 - Middle mouse button switch units (meters / foots)
 
+## FS19PlaceAnywhere.zip
+
+Modified the `DISPLACEMENT_COST_PER_M3` and `SCULPT_BASE_COST_PER_M3` values in LUA to reduce costs to zero.
 
 ## Standard procedure to add the multiplayer tag to a mod
 
