@@ -34,6 +34,7 @@ Section Mods
   SectionIn 1 RO
 
   SetOutPath $INSTDIR
+  SetOverwrite on
   File /r mods\*.zip
 SectionEnd
 
