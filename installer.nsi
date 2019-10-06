@@ -35,6 +35,7 @@ Section Mods
 
   SetOutPath $INSTDIR
   SetOverwrite on
+  AllowSkipFiles on
   File /r mods\*.zip
 SectionEnd
 
