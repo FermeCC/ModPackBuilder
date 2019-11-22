@@ -44,7 +44,8 @@ jobs:
           name: Compile installer
           command: |
             export NSISDIR=/usr/share/nsis
-            makensis installer.nsi
+            # makensis installer.nsi
+            nsisbi/nsis-code-7069-2-NSIS-trunk/makensis installer.nsi
       - run:
           name: AV scan
           command: |
