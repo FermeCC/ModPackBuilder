@@ -9,12 +9,27 @@ jobs:
           name: Installing QOL utils
           command: |
             apt-get -qq update
-            apt-get -qq install -y wget unzip xmlstarlet
+            apt-get -qq install -y wget unzip xmlstarlet less
       - run:
           name: Installing nsis
           command: |
             apt-get -qq update
             apt-get -qq install -y nsis
+      - run:
+          name: Installing nsisbi
+          command: |
+            apt-get -qq install -y build-essential scons zlib1g-dev
+            mkdir -p nsisbi
+
+            # from https://nsis.sourceforge.io/Zlib
+            wget https://nsis.sourceforge.io/mediawiki/images/b/bb/Zlib-1.2.8-win64-AMD64.zip -P /tmp/
+            unzip /tmp/Zlib-1.2.8-win64-AMD64.zip -d nsisbi/zlib
+            
+            wget https://iweb.dl.sourceforge.net/project/nsisbi/nsisbi3.04.2/nsis-code-7069-2-NSIS-trunk.zip -P /tmp/
+            unzip /tmp/nsis-code-7069-2-NSIS-trunk.zip -d nsisbi
+            
+            export ZLIB_W32=/root/project/nsisbi scons
+            (cd ~/project/nsisbi/nsis-code-7069-2-NSIS-trunk && scons SKIPSTUBS=all SKIPPLUGINS=all SKIPUTILS=all SKIPMISC=all NSIS_CONFIG_CONST_DATA_PATH=no PREFIX=. install-compiler)
       - run:
           name: Prepare folders
           command: |
@@ -28,6 +43,7 @@ jobs:
       - run:
           name: Compile installer
           command: |
+            export NSISDIR=/usr/share/nsis
             makensis installer.nsi
       - run:
           name: AV scan
