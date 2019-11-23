@@ -60,7 +60,9 @@ jobs:
           name: Package and Release to Amazon S3
           command: |
             apt-get -qq update
-            apt-get -qq install -y s3cmd
+
+            # noninteractive needed otherwize tz-data gets needy
+            DEBIAN_FRONTEND=noninteractive apt-get -qq install -y s3cmd
 
             MODPACK_VERSION=$(date +%F_%H%M%S)
             s3cmd put release_stub.txt            s3://${RELEASE_BUCKET}/${MODPACK_VERSION}/
