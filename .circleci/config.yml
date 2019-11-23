@@ -57,14 +57,25 @@ jobs:
           name: Build Release Notes
           command: ./build_release_notes.sh release_stub.txt
       - run:
-          name: Package and Release to Github
+          name: Package and Release to Amazon S3
           command: |
+            apt-get -qq update
+            apt-get -qq install -y s3cmd
+
             MODPACK_VERSION=$(date +%F_%H%M%S)
-            FILENAME=FermeCC_ModPack.exe
+            s3cmd put release_stub.txt            s3://${RELEASE_BUCKET}/${MODPACK_VERSION}/
+            s3cmd put FermeCC_ModPack.exe         s3://${RELEASE_BUCKET}/${MODPACK_VERSION}/
+            s3cmd put build/all_mods_download.zip s3://${RELEASE_BUCKET}/${MODPACK_VERSION}/
 
-            cp $FILENAME build/
+            s3cmd setacl -r s3://${RELEASE_BUCKET}/${MODPACK_VERSION}/ --acl-public
+      # - run:
+      #     name: Package and Release to Github
+      #     command: |
+      #       MODPACK_VERSION=$(date +%F_%H%M%S)
+      #       FILENAME=FermeCC_ModPack.exe
 
-            wget https://github.com/tcnksm/ghr/releases/download/v0.12.0/ghr_v0.12.0_linux_amd64.tar.gz
-            tar -zxvf ghr_v0.12.0_linux_amd64.tar.gz
-            ghr_v0.12.0_linux_amd64/ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -b "$(< release_stub.txt)" -delete ${MODPACK_VERSION} build/
+      #       cp $FILENAME build/
 
+      #       wget https://github.com/tcnksm/ghr/releases/download/v0.12.0/ghr_v0.12.0_linux_amd64.tar.gz
+      #       tar -zxvf ghr_v0.12.0_linux_amd64.tar.gz
+      #       ghr_v0.12.0_linux_amd64/ghr -t ${GITHUB_TOKEN} -u ${CIRCLE_PROJECT_USERNAME} -r ${CIRCLE_PROJECT_REPONAME} -c ${CIRCLE_SHA1} -b "$(< release_stub.txt)" -delete ${MODPACK_VERSION} build/
