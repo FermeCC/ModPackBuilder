@@ -42,7 +42,7 @@ Section Mods
   AllowSkipFiles on
 
   InitPluginsDir
-  NSISdl::download http://dropbox.s3.ncode.ca/FermeCC/modpack/latest/all_mods_download.7z "$PLUGINSDIR\all_mods_download.7z"
+  NSISdl::download http://modpack.ferme.cc/latest/all_mods_download.7z "$PLUGINSDIR\all_mods_download.7z"
   Pop $R0 ;Get the return value
   StrCmp $R0 "success" dlok
   MessageBox MB_OK "Download failed: $R0"
