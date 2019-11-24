@@ -31,7 +31,6 @@ LicenseLangString MUILicense ${LANG_FRENCH} "lic-fr.txt"
 !define MUI_FINISHPAGE_LINK_LOCATION "https://discord.gg/fwMp7sR"
 
 !addplugindir plugins/nsisunz/Release
-InitPluginsDir
 
 Section Mods
   SectionIn 1 RO
@@ -40,6 +39,7 @@ Section Mods
   SetOverwrite on
   AllowSkipFiles on
 
+  InitPluginsDir
   NSISdl::download http://dropbox.s3.ncode.ca/FermeCC/modpack/latest/all_mods_download.zip "$PLUGINSDIR\all_mods_download.zip"
   Pop $R0 ;Get the return value
   StrCmp $R0 "success" +3
