@@ -30,7 +30,7 @@ LicenseLangString MUILicense ${LANG_FRENCH} "lic-fr.txt"
 !define MUI_FINISHPAGE_LINK "Discord"
 !define MUI_FINISHPAGE_LINK_LOCATION "https://discord.gg/fwMp7sR"
 
-!addplugindir plugins/Nsis7z_19.00/Plugins/x64-unicode
+!addplugindir plugins/Nsis7z_19.00/Plugins
 
 Section Mods
   SectionIn 1 RO
@@ -47,6 +47,8 @@ Section Mods
   Quit
 
   Nsis7z::ExtractWithDetails "$PLUGINSDIR\all_mods_download.zip" "Installing package %s..." 
+
+  Delete "$PLUGINSDIR\all_mods_download.zip"
 SectionEnd
 
 Function .onInit
