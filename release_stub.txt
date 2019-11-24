@@ -1,6 +1,6 @@
 Two versions of the modpack are available:
 
-- all_mods_download.zip: requires manual extract to `$DOCUMENTS\My Games\FarmingSimulator2019\Mods`.
+- all_mods_download.zip: requires manual extract to `%USERPROFILE%\Documents\My Games\FarmingSimulator2019\Mods`.
 - FermeCC_ModPack.exe: *recommended* a self-extrating archive requiring no other manual steps.
 
 All mods are properties of their respective creators.
