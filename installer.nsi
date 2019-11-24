@@ -43,15 +43,15 @@ Section Mods
   AllowSkipFiles on
 
   InitPluginsDir
-  NSISdl::download http://dropbox.s3.ncode.ca/FermeCC/modpack/latest/all_mods_download.zip "$PLUGINSDIR\all_mods_download.zip"
+  NSISdl::download http://dropbox.s3.ncode.ca/FermeCC/modpack/latest/all_mods_download.7z "$PLUGINSDIR\all_mods_download.7z"
   Pop $R0 ;Get the return value
   StrCmp $R0 "success" +3
   MessageBox MB_OK "Download failed: $R0"
   Quit
 
-  Nsis7z::ExtractWithDetails "$PLUGINSDIR\all_mods_download.zip" "Installing package %s..." 
+  Nsis7z::ExtractWithDetails "$PLUGINSDIR\all_mods_download.7z" "Installing package %s..." 
 
-  Delete "$PLUGINSDIR\all_mods_download.zip"
+  Delete "$PLUGINSDIR\all_mods_download.7z"
 SectionEnd
 
 Function .onInit

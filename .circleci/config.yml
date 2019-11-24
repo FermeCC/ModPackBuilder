@@ -57,6 +57,12 @@ jobs:
           name: Build Release Notes
           command: ./build_release_notes.sh release_stub.txt
       - run:
+          name: Repack to 7z
+          command: |
+            apt-get -qq update
+            apt-get -qq install -y p7zip-full
+            (cd mods && 7za a -m0=lzma2 -mx=5 -mmt4 ../build/all_mods_download.7z *.zip)
+      - run:
           name: Package and Release to Amazon S3
           command: |
             apt-get -qq update
@@ -67,6 +73,7 @@ jobs:
             aws s3 cp release_stub.txt            s3://${RELEASE_BUCKET}/${MODPACK_VERSION}/ --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
             aws s3 cp FermeCC_ModPack.exe         s3://${RELEASE_BUCKET}/${MODPACK_VERSION}/ --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
             aws s3 cp build/all_mods_download.zip s3://${RELEASE_BUCKET}/${MODPACK_VERSION}/ --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
+            aws s3 cp build/all_mods_download.7z  s3://${RELEASE_BUCKET}/${MODPACK_VERSION}/ --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
             aws s3 cp --recursive s3://${RELEASE_BUCKET}/${MODPACK_VERSION}/ s3://${RELEASE_BUCKET}/latest/ --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
       # - run:
       #     name: Package and Release to Github
