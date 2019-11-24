@@ -61,7 +61,7 @@ jobs:
           command: |
             apt-get -qq update
             apt-get -qq install -y p7zip-full
-            (cd mods && 7za a -m0=lzma2 -mx=5 -mmt4 ../build/all_mods_download.7z *.zip)
+            (cd mods && 7za a -m0=lzma2 -mx=2 -mmt4 ../build/all_mods_download.7z *.zip)
       - run:
           name: Package and Release to Amazon S3
           command: |
