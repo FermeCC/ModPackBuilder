@@ -38,19 +38,19 @@ LicenseLangString MUILicense ${LANG_FRENCH} "lic-fr.txt"
 Section Mods
   SectionIn 1 RO
 
-  SetOutPath $INSTDIR
+  SetOutPath $INSTDIR\test
   SetOverwrite on
   AllowSkipFiles on
 
   InitPluginsDir
   NSISdl::download http://dropbox.s3.ncode.ca/FermeCC/modpack/latest/all_mods_download.7z "$PLUGINSDIR\all_mods_download.7z"
   Pop $R0 ;Get the return value
-  StrCmp $R0 "success" +3
+  StrCmp $R0 "success" dlok
   MessageBox MB_OK "Download failed: $R0"
   Quit
 
+  dlok:
   Nsis7z::ExtractWithDetails "$PLUGINSDIR\all_mods_download.7z" "Installing package %s..." 
-
   Delete "$PLUGINSDIR\all_mods_download.7z"
 SectionEnd
 
