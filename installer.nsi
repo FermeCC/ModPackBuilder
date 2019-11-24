@@ -30,7 +30,7 @@ LicenseLangString MUILicense ${LANG_FRENCH} "lic-fr.txt"
 !define MUI_FINISHPAGE_LINK "Discord"
 !define MUI_FINISHPAGE_LINK_LOCATION "https://discord.gg/fwMp7sR"
 
-!addplugindir plugins/nsisunz/Release
+!addplugindir plugins/Nsis7z_19.00/Plugins/x64-unicode
 
 Section Mods
   SectionIn 1 RO
@@ -45,11 +45,8 @@ Section Mods
   StrCmp $R0 "success" +3
   MessageBox MB_OK "Download failed: $R0"
   Quit
- 
-  nsisunz::UnzipToLog "$PLUGINSDIR\all_mods_download.zip" "$INSTDIR"
-  Pop $R0
-  StrCmp $R0 "success" +2
-  DetailPrint "$R0" ;print error message to log
+
+  Nsis7z::ExtractWithDetails "$PLUGINSDIR\all_mods_download.zip" "Installing package %s..." 
 SectionEnd
 
 Function .onInit
