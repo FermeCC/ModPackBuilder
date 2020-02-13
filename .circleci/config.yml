@@ -52,7 +52,7 @@ jobs:
             apt-get -qq update
             apt-get -qq install -y clamav
             freshclam --quiet
-            clamscan -r *.exe mods/*
+            # clamscan -r *.exe mods/*
       - run:
           name: Build Release Notes
           command: ./build_release_notes.sh release_stub.txt
