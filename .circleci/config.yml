@@ -9,7 +9,8 @@ jobs:
           name: Installing QOL utils
           command: |
             apt-get -qq update
-            apt-get -qq install -y wget unzip xmlstarlet less
+            # noninteractive needed otherwize tz-data asks questions
+            DEBIAN_FRONTEND=noninteractive apt-get -qq install -y wget unzip xmlstarlet less
       - run:
           name: Installing nsis
           command: |
