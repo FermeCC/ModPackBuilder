@@ -39,7 +39,8 @@ jobs:
       - run:
           name: Retrieve and extract master archive
           command: |
-            wget https://s3.amazonaws.com/dropbox.s3.ncode.ca/FermeCC/all_mods_download.zip -P build/
+            # wget https://s3.amazonaws.com/dropbox.s3.ncode.ca/FermeCC/all_mods_download.zip -P build/
+            wget https://f000.backblazeb2.com/file/modpack-ferme-cc/all_mods_download.zip -P build/
             unzip build/all_mods_download.zip -d mods
       - run:
           name: Compile installer
@@ -63,19 +64,25 @@ jobs:
             apt-get -qq update
             apt-get -qq install -y p7zip-full
             (cd mods && 7za a -m0=lzma2 -mx=2 -mmt4 ../build/all_mods_download.7z *.zip)
+      # - run:
+      #     name: Package and Release to Amazon S3
+      #     command: |
+      #       apt-get -qq update
+      #       # noninteractive needed otherwize tz-data asks questions
+      #       DEBIAN_FRONTEND=noninteractive apt-get -qq install -y awscli
+
+      #       MODPACK_VERSION=$(date +%F_%H%M%S)
+      #       aws s3 cp release_stub.txt            s3://${RELEASE_BUCKET}/${MODPACK_VERSION}/ --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
+      #       aws s3 cp FermeCC_ModPack.exe         s3://${RELEASE_BUCKET}/${MODPACK_VERSION}/ --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
+      #       aws s3 cp build/all_mods_download.zip s3://${RELEASE_BUCKET}/${MODPACK_VERSION}/ --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
+      #       aws s3 cp build/all_mods_download.7z  s3://${RELEASE_BUCKET}/${MODPACK_VERSION}/ --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
+      #       aws s3 cp --recursive s3://${RELEASE_BUCKET}/${MODPACK_VERSION}/ s3://${RELEASE_BUCKET}/latest/ --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
       - run:
-          name: Package and Release to Amazon S3
+          name: Package and Release to Backblaze B2
           command: |
             apt-get -qq update
-            # noninteractive needed otherwize tz-data asks questions
-            DEBIAN_FRONTEND=noninteractive apt-get -qq install -y awscli
-
-            MODPACK_VERSION=$(date +%F_%H%M%S)
-            aws s3 cp release_stub.txt            s3://${RELEASE_BUCKET}/${MODPACK_VERSION}/ --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
-            aws s3 cp FermeCC_ModPack.exe         s3://${RELEASE_BUCKET}/${MODPACK_VERSION}/ --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
-            aws s3 cp build/all_mods_download.zip s3://${RELEASE_BUCKET}/${MODPACK_VERSION}/ --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
-            aws s3 cp build/all_mods_download.7z  s3://${RELEASE_BUCKET}/${MODPACK_VERSION}/ --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
-            aws s3 cp --recursive s3://${RELEASE_BUCKET}/${MODPACK_VERSION}/ s3://${RELEASE_BUCKET}/latest/ --grants read=uri=http://acs.amazonaws.com/groups/global/AllUsers
+            apt-get -qq install -y backblaze-b2
+            b2 authorize-account
       # - run:
       #     name: Package and Release to Github
       #     command: |
