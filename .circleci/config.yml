@@ -80,16 +80,16 @@ jobs:
       - run:
           name: Package and Release to Backblaze B2
           command: |
-            apt-get -qq update
-            apt-get -qq install -y backblaze-b2
-            backblaze-b2 authorize-account
+            wget https://f000.backblazeb2.com/file/backblazefiles/b2/cli/linux/b2 -O b2
+            chmod +x b2
+            ./b2 authorize-account
 
             MODPACK_VERSION=$(date +%F_%H%M%S)
-            backblaze-b2 upload_file ${B2_RELEASE_BUCKET} release_stub.txt.           ${MODPACK_VERSION}/release_stub.txt
-            backblaze-b2 upload_file ${B2_RELEASE_BUCKET} FermeCC_ModPack.exe         ${MODPACK_VERSION}/FermeCC_ModPack.exe
-            backblaze-b2 upload_file ${B2_RELEASE_BUCKET} build/all_mods_download.zip ${MODPACK_VERSION}/all_mods_download.zip
-            backblaze-b2 upload_file ${B2_RELEASE_BUCKET} build/all_mods_download.7z  ${MODPACK_VERSION}/all_mods_download.7z
-            backblaze-b2 sync --delete b2://${B2_RELEASE_BUCKET}/${MODPACK_VERSION}/  b2://${B2_RELEASE_BUCKET}/latest/
+            ./b2 upload_file ${B2_RELEASE_BUCKET} release_stub.txt.           ${MODPACK_VERSION}/release_stub.txt
+            ./b2 upload_file ${B2_RELEASE_BUCKET} FermeCC_ModPack.exe         ${MODPACK_VERSION}/FermeCC_ModPack.exe
+            ./b2 upload_file ${B2_RELEASE_BUCKET} build/all_mods_download.zip ${MODPACK_VERSION}/all_mods_download.zip
+            ./b2 upload_file ${B2_RELEASE_BUCKET} build/all_mods_download.7z  ${MODPACK_VERSION}/all_mods_download.7z
+            ./b2 sync --delete b2://${B2_RELEASE_BUCKET}/${MODPACK_VERSION}/  b2://${B2_RELEASE_BUCKET}/latest/
 
       # - run:
       #     name: Package and Release to Github
