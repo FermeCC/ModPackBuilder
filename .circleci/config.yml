@@ -85,7 +85,7 @@ jobs:
             ./b2 authorize-account
 
             MODPACK_VERSION=$(date +%F_%H%M%S)
-            ./b2 upload_file ${B2_RELEASE_BUCKET} release_stub.txt.           ${MODPACK_VERSION}/release_stub.txt
+            ./b2 upload_file ${B2_RELEASE_BUCKET} release_stub.txt            ${MODPACK_VERSION}/release_stub.txt
             ./b2 upload_file ${B2_RELEASE_BUCKET} FermeCC_ModPack.exe         ${MODPACK_VERSION}/FermeCC_ModPack.exe
             ./b2 upload_file ${B2_RELEASE_BUCKET} build/all_mods_download.zip ${MODPACK_VERSION}/all_mods_download.zip
             ./b2 upload_file ${B2_RELEASE_BUCKET} build/all_mods_download.7z  ${MODPACK_VERSION}/all_mods_download.7z
